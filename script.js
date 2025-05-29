@@ -21,7 +21,7 @@ const start          = 'https://player.twitch.tv/?'
 const muted          = 'muted=true&'
 const low            = `quality=${ is768 ? '360p30' : '720p60' }&`
 const high           = `quality=${ is768 ? '720p60' : 'chunked' }&`
-const middle         = 'parent=rollanibrayev.github.io&channel='
+const middle         = 'parent=r0landd.github.io&channel='
 const extractChannel = url => url.slice(22)
 
 let appearedIframesCounter = 0
