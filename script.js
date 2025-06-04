@@ -12,22 +12,23 @@ inputs[2].style.top  = y
 inputs[3].style.left = x
 inputs[3].style.top  = y
 
-function updateSrc(index) {
-  iframes[index].src = `https://player.twitch.tv/?parent=r0landd.github.io&quality=${
-    iframesData[index].isHighQuality ? 'chunked' : '720p60'
-  }&channel=${iframesData[index].channel}${
-    iframesData[index].isMuted ? '&muted=true' : ''
-  }`
-}
-
-const extractChannel = url => url.slice(22)
-
 const iframesData = [
   { isHighQuality: false, channel: '', isMuted: false },
   { isHighQuality: false, channel: '', isMuted: false },
   { isHighQuality: false, channel: '', isMuted: false },
   { isHighQuality: false, channel: '', isMuted: false }
 ]
+
+
+function updateSrc(index) {
+  iframes[index].src = `https://player.twitch.tv/?parent=r0landd.github.io&quality=${
+    iframesData[index].isHighQuality ? '720p60' : '480p30'
+  }&channel=${iframesData[index].channel}${
+    iframesData[index].isMuted ? '&muted=true' : ''
+  }`
+}
+
+const extractChannel = url => url.slice(22)
 
 let appearedIframesCounter = 0
 inputs[4].addEventListener('input', event => {
