@@ -1,45 +1,55 @@
-const iframes        = document.querySelectorAll('iframe')
-const is768          = window.screen.height == 768
-const leftCoordinate = `calc(${ is768 ? '32000vw/683' : '50vw' })`
-const topCoordinate  = `calc(${ is768 ? '18000vw/683' : '28.125vw' })`
-const inputs         = document.querySelectorAll('input')
+const iframes = document.querySelectorAll('iframe')
+const inputs = document.querySelectorAll('input')
+const x = '50vw'
+const y = '28.125vw'
 
-iframes.forEach(iframe => {
-  iframe.style.width  = leftCoordinate
-  iframe.style.height = topCoordinate
-})
-iframes[1].style.left = leftCoordinate
-iframes[2].style.top  = topCoordinate
-iframes[3].style.left = leftCoordinate
-iframes[3].style.top  = topCoordinate
-inputs [1].style.left = leftCoordinate
-inputs [2].style.top  = topCoordinate
-inputs [3].style.left = leftCoordinate
-inputs [3].style.top  = topCoordinate
+iframes[1].style.left = x
+iframes[2].style.top  = y
+iframes[3].style.left = x
+iframes[3].style.top  = y
+inputs[1].style.left = x
+inputs[2].style.top  = y
+inputs[3].style.left = x
+inputs[3].style.top  = y
 
-const start          = 'https://player.twitch.tv/?'
-const muted          = 'muted=true&'
-const low            = `quality=${ is768 ? '360p30' : '720p60' }&`
-const high           = `quality=${ is768 ? '720p60' : 'chunked' }&`
-const middle         = 'parent=r0landd.github.io&channel='
+function updateSrc(index) {
+  iframes[index].src = `https://player.twitch.tv/?parent=r0landd.github.io&quality=${
+    iframesData[index].isHighQuality ? 'chunked' : '720p60'
+  }&channel=${iframesData[index].channel}${
+    iframesData[index].isMuted ? '&muted=true' : ''
+  }`
+}
+
 const extractChannel = url => url.slice(22)
+
+const iframesData = [
+  { isHighQuality: false, channel: '', isMuted: false },
+  { isHighQuality: false, channel: '', isMuted: false },
+  { isHighQuality: false, channel: '', isMuted: false },
+  { isHighQuality: false, channel: '', isMuted: false }
+]
 
 let appearedIframesCounter = 0
 inputs[4].addEventListener('input', event => {
-  if (appearedIframesCounter > 1) !document.fullscreenElement ? document.body.requestFullscreen() :1
-  if (appearedIframesCounter < 1) event.target.removeAttribute('placeholder')
-  iframes[++appearedIframesCounter - 1].src =
-    start + muted + high + middle + extractChannel(event.target.value)
-  event.target.value = ''
-  if (appearedIframesCounter > iframes.length - 1)
-    event.target.remove()
+  const eventTarget = event.target;
+  if (eventTarget.value.startsWith('https://www.twitch.tv/')) appearedIframesCounter++
+  else return
+  if (eventTarget.hasAttribute('placeholder')) eventTarget.removeAttribute('placeholder')
+  iframesData[appearedIframesCounter - 1].channel = extractChannel(eventTarget.value)
+  eventTarget.value = ''
+  updateSrc(appearedIframesCounter - 1)
+  if (appearedIframesCounter > 3) {
+    eventTarget.remove()
+    document.body.requestFullscreen()
+  }
 })
+
+
+
+
 
 let mouseDownedInputIndex
 inputs.forEach((input, index) => {
-  if (index > 3) return
-  input.style.width  = leftCoordinate
-  input.style.height = topCoordinate
   input.addEventListener('mousedown', () => mouseDownedInputIndex = index )
   input.addEventListener('mouseup', () => {
     if (mouseDownedInputIndex == index) return
@@ -54,42 +64,24 @@ inputs.forEach((input, index) => {
     inputs [mouseDownedInputIndex].style.left = mouseUppedInputLeftCoordinate
     inputs [mouseDownedInputIndex].style.top  = mouseUppedInputTopCoordinate
   })
+
   input.addEventListener('input', event => {
     const value = event.target.value
     const iframe = iframes[index]
-    const src = iframe.src
-    const isMuted = src[26] == 'm'
-    const isQualityLow = src[ isMuted ? 45 : 34 ] == low[8]
-    const isQualityChunked = !is768 && !isQualityLow
-    const channel = src.slice(
-      isQualityChunked
-        ? isMuted
-          ? 92
-          : 81
-        : isMuted
-          ? 91
-          : 80
-    )
     switch (value.toUpperCase()) {
       case 'M':
-        iframe.src =
-            start
-          + (isMuted ? '' : muted)
-          + src.slice( isMuted ? 37 : 26 )
+        iframesData[input].isMuted = iframesData[input].isMuted ? false : true
+        updateSrc(index)
         break
       case 'C':
         window.open(
-          `https://www.twitch.tv/popout/${ channel }/chat`,
+          `https://www.twitch.tv/popout/${ iframesData[input].channel }/chat`,
           '_blank'
         )
         break
       case 'Q':
-        iframe.src =
-            start
-          + (isMuted ? muted : '')
-          + (isQualityLow ? high : low)
-          + middle
-          + channel
+        iframesData[input].isHighQuality = iframesData[input].isHighQuality ? false : true
+        updateSrc(index)
         break
       case 'R':
         iframe.src = iframe.src
@@ -101,12 +93,15 @@ inputs.forEach((input, index) => {
         iframe.removeAttribute('src')
         break
       default:
-        if (value[1])
-          iframe.src = start + muted + high + middle + extractChannel(value)
+        if (value[1]) {
+          iframesData[input].channel = extractChannel(value)
+          updateSrc(index)
+        }
     }
     event.target.value = ''
   })
 })
+
 
 const toggle = event => {
   event.preventDefault()
