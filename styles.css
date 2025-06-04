@@ -1,23 +1,30 @@
 body {
   margin: 0;
-  background-color: 000;
+  background: #000;
   overflow: hidden;
 }
+
 iframe {
+  width: 50vw;
+  height: 28.125vw;
   border: 0;
   position: absolute;
   z-index: 1;
 }
+
 input {
+  width: 50vw;
+  height: 28.125vw;
   z-index: 2;
   position: absolute;
   border: 0;
-  background-color: transparent;
+  background: transparent;
   cursor: default;
   outline: none;
   caret-color: transparent;
   padding: 0;
 }
+
 input:nth-of-type(5) {
   width: 100vw;
   height: 100vh;
