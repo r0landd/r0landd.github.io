@@ -13,7 +13,7 @@ inputs[3].style.left = x
 inputs[3].style.top  = y
 
 const iframesData = [
-  { isHighQuality: false, channel: '', isMuted: true },
+  { isHighQuality: false, channel: '', isMuted: false },
   { isHighQuality: false, channel: '', isMuted: true },
   { isHighQuality: false, channel: '', isMuted: true },
   { isHighQuality: false, channel: '', isMuted: true }
