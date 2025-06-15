@@ -4,18 +4,28 @@ body {
   overflow: hidden;
 }
 
-iframe {
-  width: 50vw;
-  height: 28.125vw;
-  border: 0;
-  position: absolute;
+div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+div:nth-of-type(1) {
   z-index: 1;
 }
 
-input {
-  width: 50vw;
-  height: 28.125vw;
+div:nth-of-type(2) {
   z-index: 2;
+}
+
+iframe {
+  border: 0;
+  position: absolute;
+}
+
+input {
   position: absolute;
   border: 0;
   background: transparent;
