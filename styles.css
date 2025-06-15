@@ -6,7 +6,7 @@ body {
 
 iframe {
   width: 50vw;
-  height: 28.125vw;
+  height: 50vh;
   border: 0;
   position: absolute;
   z-index: 1;
@@ -14,7 +14,7 @@ iframe {
 
 input {
   width: 50vw;
-  height: 28.125vw;
+  height: 50vh;
   z-index: 2;
   position: absolute;
   border: 0;
