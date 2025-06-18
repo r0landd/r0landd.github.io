@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+iframe {
+  width: 50vw;
+  height: 50vh;
+  border: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+input {
+  width: 50vw;
+  height: 50vh;
+  z-index: 2;
+  position: absolute;
+  border: 0;
+  background: transparent;
+  cursor: default;
+  outline: none;
+  caret-color: transparent;
+  padding: 0;
+}
+
+input:nth-of-type(5) {
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  font-size: 5.5vh;
+  font-family: Calibri;
+  text-align: center;
+}
+::placeholder {
+  color: 808080;
+}
