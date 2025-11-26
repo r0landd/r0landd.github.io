@@ -1,0 +1,69 @@
+@font-face{
+  font-family: gg sans;
+  font-style: normal;
+  font-weight: 400;
+  src: url(gg-sans/normal/400.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: italic;
+  font-weight: 400;
+  src: url(gg-sans/italic/400.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: normal;
+  font-weight: 500;
+  src: url(gg-sans/normal/500.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: italic;
+  font-weight: 500;
+  src: url(gg-sans/italic/500.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: normal;
+  font-weight: 600;
+  src: url(gg-sans/normal/600.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: italic;
+  font-weight: 600;
+  src: url(gg-sans/italic/600.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: normal;
+  font-weight: 700;
+  src: url(gg-sans/normal/700.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: italic;
+  font-weight: 700;
+  src: url(gg-sans/italic/700.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: normal;
+  font-weight: 800;
+  src: url(gg-sans/normal/800.woff2) format("woff2");
+}
+
+@font-face{
+  font-family: gg sans;
+  font-style: italic;
+  font-weight: 800;
+  src: url(gg-sans/italic/800.woff2) format("woff2");
+}
