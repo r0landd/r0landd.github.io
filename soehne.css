@@ -1,6 +1,10 @@
+/*
+@import url("https://cdn.jsdelivr.net/gh/r0landd/r0landd.github.io/soehne.css");
+*/
 @font-face{font-family:Söhne;font-style:normal;font-weight:400;font-display:swap;font-stretch:normal  ;src:url(soehne-normal-400-swap-normal  )format("woff2")}
 @font-face{font-family:Söhne;font-style:italic;font-weight:400;font-display:swap;font-stretch:normal  ;src:url(soehne-italic-400-swap-normal  )format("woff2")}
 @font-face{font-family:Söhne;font-style:normal;font-weight:600;font-display:swap;font-stretch:normal  ;src:url(soehne-normal-600-swap-normal  )format("woff2")}
 @font-face{font-family:Söhne;font-style:normal;font-weight:700;font-display:swap;font-stretch:normal  ;src:url(soehne-normal-700-swap-normal  )format("woff2")}
 @font-face{font-family:Söhne;font-style:normal;font-weight:900;font-display:swap;font-stretch:normal  ;src:url(soehne-normal-900-swap-normal  )format("woff2")}
 @font-face{font-family:Söhne;font-style:normal;font-weight:900;font-display:swap;font-stretch:expanded;src:url(soehne-normal-900-swap-expanded)format("woff2")}
+
